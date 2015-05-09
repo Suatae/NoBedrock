@@ -12,18 +12,17 @@ public class NBClientEventHandler {
 
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public void onEvent(PlayerEvent.NameFormat event) {
-		if (event.username == "Suatae") {
+		if (event.username.equalsIgnoreCase("Suatae")) {
 			event.displayname = event.username + " the Engineer";
 		}
 		else
-			if (event.username == "Omegami") {
+			if (event.username.equalsIgnoreCase("Omegami")) {
 				event.displayname = event.username + " the Mage";
 			}
 			else {
-				event.displayname = "Jobe";
+				event.displayname = event.username + " the Unknown";
 
 			}
 
 	}
-
 }

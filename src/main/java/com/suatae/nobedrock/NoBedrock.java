@@ -33,23 +33,16 @@ public class NoBedrock {
 
 		if (ConfigUtil.DebugMode) {
 			LogHelper.info("[Pre-Initialization]: --- Loading ---");
-
-			proxy.preInit();
-			MinecraftForge.EVENT_BUS.register(new NBChunckEventHandler());
-			LogHelper.info("Bedrock Replaced");
-			MinecraftForge.EVENT_BUS.register(new NBClientEventHandler());
-
-			ConfigUtil.init(event.getSuggestedConfigurationFile());
-			FMLCommonHandler.instance().bus().register(new ConfigUtil());
 		}
-		else {
-			proxy.preInit();
-			MinecraftForge.EVENT_BUS.register(new NBChunckEventHandler());
-			MinecraftForge.EVENT_BUS.register(new NBClientEventHandler());
 
-			ConfigUtil.init(event.getSuggestedConfigurationFile());
-			FMLCommonHandler.instance().bus().register(new ConfigUtil());
-		}
+		else {}
+		proxy.preInit();
+		MinecraftForge.EVENT_BUS.register(new NBChunckEventHandler());
+		LogHelper.info("Bedrock Replaced");
+		MinecraftForge.EVENT_BUS.register(new NBClientEventHandler());
+		LogHelper.info("Display Names Changed");
+		ConfigUtil.init(event.getSuggestedConfigurationFile());
+		FMLCommonHandler.instance().bus().register(new ConfigUtil());
 
 		if (ConfigUtil.DebugMode) {
 			LogHelper.info("[Pre-Initialization]: --- Complete! ---");
@@ -65,9 +58,8 @@ public class NoBedrock {
 			LogHelper.info("[Initialization]: --- Loading ---");
 			proxy.Init();
 		}
-		else {
-			proxy.Init();
-		}
+		else {}
+		proxy.Init();
 
 		if (ConfigUtil.DebugMode) {
 			LogHelper.info("The Monkey is ready with the Screwdriver");
@@ -85,9 +77,8 @@ public class NoBedrock {
 			proxy.postInit();
 			LogHelper.info("[Post-Initialization]: --- Complete! ---");
 		}
-		else {
-			proxy.postInit();
-		}
+		else {}
+		proxy.postInit();
 
 	}
 
