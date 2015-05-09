@@ -2,7 +2,8 @@ package com.suatae.nobedrock;
 
 import net.minecraftforge.common.MinecraftForge;
 
-import com.suatae.nobedrock.common.core.NBEventHandler;
+import com.suatae.nobedrock.common.core.NBChunckEventHandler;
+import com.suatae.nobedrock.common.core.NBClientEventHandler;
 import com.suatae.nobedrock.common.core.lib.REF;
 import com.suatae.nobedrock.proxy.CommonProxy;
 import com.suatae.nobedrock.utility.ConfigUtil;
@@ -34,15 +35,17 @@ public class NoBedrock {
 			LogHelper.info("[Pre-Initialization]: --- Loading ---");
 
 			proxy.preInit();
-			MinecraftForge.EVENT_BUS.register(new NBEventHandler());
+			MinecraftForge.EVENT_BUS.register(new NBChunckEventHandler());
 			LogHelper.info("Bedrock Replaced");
+			MinecraftForge.EVENT_BUS.register(new NBClientEventHandler());
 
 			ConfigUtil.init(event.getSuggestedConfigurationFile());
 			FMLCommonHandler.instance().bus().register(new ConfigUtil());
 		}
 		else {
 			proxy.preInit();
-			MinecraftForge.EVENT_BUS.register(new NBEventHandler());
+			MinecraftForge.EVENT_BUS.register(new NBChunckEventHandler());
+			MinecraftForge.EVENT_BUS.register(new NBClientEventHandler());
 
 			ConfigUtil.init(event.getSuggestedConfigurationFile());
 			FMLCommonHandler.instance().bus().register(new ConfigUtil());
